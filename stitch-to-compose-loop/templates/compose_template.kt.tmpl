@@ -24,6 +24,7 @@ fun GeneratedScreen(
     // Add additional parameters, state flows, or event lambdas here
 ) {
     Scaffold(
+        // NOTE: If the design does not require a top bar, remove it.
         topBar = {
             TopAppBar(
                 title = { Text("Generated Screen") },
@@ -35,12 +36,13 @@ fun GeneratedScreen(
         },
         modifier = modifier
     ) { innerPadding ->
+        // NOTE: Adjust layout structures (Box, Column, Row, LazyColumn) and 
+        // paddings/spacings precisely according to the Stitch design specifications.
+        // Do not force 16.dp padding or spacedBy if not present in the design.
         Column(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             // Screen elements go here
             Text(

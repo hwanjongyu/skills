@@ -33,7 +33,7 @@ TEST_TEMPLATE = """package {package}
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import io.github.takahirom.roborazzi.captureRoboImage
+import com.github.takahirom.roborazzi.captureRoboImage
 {theme_import}
 {composable_import}
 import org.junit.Rule
@@ -44,24 +44,23 @@ import org.robolectric.annotation.GraphicsMode
 
 @RunWith(AndroidJUnit4::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
-@Config(sdk = [34], manifest = Config.NONE)
+@Config(sdk = [34], manifest = Config.NONE, qualifiers = "{qualifiers}")
 class PreviewScreenshotTest {{
     @get:Rule
     val composeTestRule = createComposeRule()
 
     @Test
     fun testRenderPreview() {{
-        composeTestRule.setContent {{
+        captureRoboImage("{output_image_path}") {{
             {theme_name} {{
                 {composable_name}()
             }}
         }}
-        captureRoboImage("{output_image_path}")
     }}
 }}
 """
 
-def generate_test_class(test_class_path, composable_name, composable_import, output_image_path, package, theme_name, theme_import):
+def generate_test_class(test_class_path, composable_name, composable_import, output_image_path, package, theme_name, theme_import, qualifiers):
     test_class_dir = os.path.dirname(test_class_path)
     os.makedirs(test_class_dir, exist_ok=True)
     
@@ -80,7 +79,8 @@ def generate_test_class(test_class_path, composable_name, composable_import, out
         theme_name=theme_name,
         composable_import=composable_import_line,
         composable_name=composable_name,
-        output_image_path=output_image_path
+        output_image_path=output_image_path,
+        qualifiers=qualifiers
     )
     
     # Write test class
@@ -101,7 +101,7 @@ def run_gradle_test(project_root, module_name, package):
         f":{module_name}:testDebugUnitTest",
         "--tests",
         f"{package}.PreviewScreenshotTest",
-        "-Proborazzi.record=true"
+        "-Proborazzi.test.record=true"
     ]
     print(f"Running command: {' '.join(cmd)}")
     
@@ -132,6 +132,7 @@ def main():
     parser.add_argument("--theme", default="SnapShelfTheme", help="Theme name to wrap the Composable with.")
     parser.add_argument("--theme-import", default="io.github.drew_developer.snapshelf.ui.theme.SnapShelfTheme", help="Import path for the application theme.")
     parser.add_argument("--module", default="app", help="Gradle module name containing the UI.")
+    parser.add_argument("--qualifiers", default="w360dp-h800dp-xhdpi", help="Robolectric device qualifiers for screen dimensions and density.")
     
     # Check if arguments were passed. Standard CLI usage fallback to support positional args
     args = parser.parse_args()
@@ -172,7 +173,8 @@ def main():
             output_image_path=output_image_path,
             package=args.package,
             theme_name=args.theme,
-            theme_import=args.theme_import
+            theme_import=args.theme_import,
+            qualifiers=args.qualifiers
         )
         test_generated = True
         
