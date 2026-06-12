@@ -61,7 +61,19 @@ Use `StitchMCP` to fetch design resources for the target screen:
 Create the Composable file:
 1. Scaffold the screen using the template [compose_template.kt.tmpl](templates/compose_template.kt.tmpl).
 2. Save the generated code to your project's UI folder (e.g. `<project-root>/app/src/main/java/io/github/drew_developer/snapshelf/ui/GeneratedScreen.kt`).
-3. Ensure no hardcoded styles are used; instead, map layouts to `MaterialTheme.colorScheme` and `MaterialTheme.typography` (or custom theme tokens).
+3. **Strict Dynamic Color & Theme Mapping Rules**:
+   * **No Static Global References**: Never directly bind hardcoded color constants or static variables (e.g. `PrimaryInk`, `SoftInk`, `WarmSand`, `PaleTaupe` etc.) inside Composable functions. All color rendering must resolve dynamically using the active `MaterialTheme.colorScheme` properties.
+   * **Dynamic Canvas Containers**: Always resolve backgrounds and surfaces using M3 containers (e.g. `surface`, `surfaceContainerLow`, `surfaceContainer`) to respect dark mode overrides.
+   * **Dynamic Border Separations**: Use `MaterialTheme.colorScheme.outlineVariant` for 1px hairline cards and dividers instead of static gray values.
+   * **Multi-State Conditionals (Stood/Density Levels)**: Match progress levels and category tiers 1:1 with corresponding theme properties:
+     * *Level 0 (Rest)* -> `MaterialTheme.colorScheme.surface`
+     * *Level 1 (Foundation)* -> `MaterialTheme.colorScheme.surfaceVariant`
+     * *Level 2 (Balanced)* -> `MaterialTheme.colorScheme.primaryContainer`
+     * *Level 3 (Peak)* -> `MaterialTheme.colorScheme.primary`
+     * *Anchor state completing* -> `MaterialTheme.colorScheme.secondary` & `onSecondary`
+     * *Core state completing* -> `MaterialTheme.colorScheme.primary` & `onPrimary`
+     * *Bonus state completing* -> `MaterialTheme.colorScheme.tertiary` & `onTertiary`
+   * **Interactivity Feedback**: Track focus changes via `onFocusChanged` for text fields and dynamically update container states (e.g., switching background between `surfaceContainerLow` and `surfaceContainer`) to match the mockup guidance.
 
 ### Phase 3: Sandboxed Compiler & Self-Healing Loop
 Run compilation checks and self-heal syntax errors:
