@@ -73,7 +73,9 @@ Create the Composable file:
      * *Anchor state completing* -> `MaterialTheme.colorScheme.secondary` & `onSecondary`
      * *Core state completing* -> `MaterialTheme.colorScheme.primary` & `onPrimary`
      * *Bonus state completing* -> `MaterialTheme.colorScheme.tertiary` & `onTertiary`
-   * **Interactivity Feedback**: Track focus changes via `onFocusChanged` for text fields and dynamically update container states (e.g., switching background between `surfaceContainerLow` and `surfaceContainer`) to match the mockup guidance.
+    * **Container & Text Contrast Pairings**: When rendering text or icons inside containers like `primaryContainer` or `primary`, never bind static dark values or default `onSurface` directly. Always pair them with their corresponding on-colors (e.g. `onPrimaryContainer` or `onPrimary` respectively), or check relative luminance dynamically to guarantee WCAG AA-compliant contrast in both light and dark modes.
+    * **Custom Theme Token Definition Requirement**: Ensure that all custom theme declarations (e.g., in `Theme.kt` for `MOSS`, `TERRACOTTA`, `SLATE` etc.) explicitly override every color token utilized by the screen layout (especially `surfaceVariant`, `surfaceContainerLowest`, etc.) to prevent default M3 fallbacks from distorting the design palette.
+    * **Interactivity Feedback**: Track focus changes via `onFocusChanged` for text fields and dynamically update container states (e.g., switching background between `surfaceContainerLow` and `surfaceContainer`) to match the mockup guidance.
 
 ### Phase 3: Sandboxed Compiler & Self-Healing Loop
 Run compilation checks and self-heal syntax errors:
@@ -98,6 +100,7 @@ Compare the rendered layout against the Stitch design:
    ```
    * This executes the Roborazzi JUnit test class and outputs the screenshot to `stitch-to-compose-loop/temp/rendered_preview.png`.
    * The temporary test class is deleted automatically after execution to avoid test pollution.
+   * **Cross-Theme Dark Mode Verification**: When rendering the screenshot preview, include tests that force system dark mode (`isSystemInDarkTheme() = true` or using dark theme parameter configurations) to check for hybrid color leaks or container color mismatches on custom themes.
 2. Retrieve the screenshot or mockups of the screen from Stitch.
 3. Compare the original mockup and the rendered screenshot.
 4. If there are visual layout issues (e.g. alignment mismatch, padding discrepancies, text alignment issues):
