@@ -1,36 +1,36 @@
-# 🔄 Stitch-to-Compose: AI Self-Healing UI Conversion Loop
+# 🚀 Antigravity Skills: Agentic AI Engineering Workflows
 
-[![Language](https://img.shields.io/badge/Language-Kotlin%20%2F%20Python-blue.svg)](https://kotlinlang.org/)
-[![Platform](https://img.shields.io/badge/Platform-Android-green.svg)](https://developer.android.com/)
-[![Tech](https://img.shields.io/badge/UI-Jetpack%20Compose-4285F4.svg)](https://developer.android.com/jetpack/compose)
-[![Tool](https://img.shields.io/badge/Visual%20Diff-Roborazzi%20%26%20Robolectric-orange.svg)](https://github.com/takahirom/roborazzi)
+[![Platform](https://img.shields.io/badge/Platform-Antigravity%20%7C%20Gemini%20CLI%20%7C%20Claude-blueviolet.svg)](https://github.com/hwanjongyu/skills)
+[![Languages](https://img.shields.io/badge/Languages-Kotlin%20%7C%20Rust%20%7C%20Python-blue.svg)](https://github.com/hwanjongyu/skills)
+[![Verification](https://img.shields.io/badge/QA-Self--Healing%20%26%20Visual%20Diff-orange.svg)](https://github.com/hwanjongyu/skills)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-An agentic AI workflow that programmatically converts UI designs from Google Stitch mockups and specifications into compiling, visually accurate, and production-ready Jetpack Compose code.
-
-Through a closed-loop integration of **compiler error parsing** and **headless screenshot testing (Visual VQA)**, the agent automatically heals syntax, layout, and styling discrepancies without human intervention.
+A curated collection of production-grade **Agentic AI Skills** designed for Google Antigravity (`agy`), Gemini CLI, and Claude AI developer workflows. Each skill provides deterministic, closed-loop execution protocols combining **code generation, compiler error parsing, headless screenshot rendering, and visual verification (VQA)**.
 
 ---
 
-## ✨ Key Features & Capabilities
+## 📦 Available Skills Catalog
 
-* **🤖 Self-Healing Compilation**: Automatically compiles modules, parses compiler logs with [error_parser.py](stitch-to-compose-loop/scripts/error_parser.py), and loops until compilation succeeds.
-* **📸 Headless Visual Validation**: Automatically renders screens headlessly using Roborazzi + Robolectric via [render_preview.py](stitch-to-compose-loop/scripts/render_preview.py) for instantaneous screenshot generation.
-* **🔍 Layout Auto-Alignment**: Computes layout discrepancies (margins, alignment, color mismatch) and iteratively rewrites code to match specifications.
-* **🌐 Portability & Auto-Detection**: Automatically detects the Android project root, packages, themes, and modules dynamically, allowing it to work seamlessly on any system.
+| Skill Name | Primary Domain | Core Capabilities | Verification Loop | Path |
+| :--- | :--- | :--- | :--- | :--- |
+| **[stitch-to-compose-loop](stitch-to-compose-loop/)** | Android UI & Jetpack Compose | Converts Google Stitch design specifications directly into production-ready Jetpack Compose code. | Headless Roborazzi + Robolectric visual diff & compiler self-healing. | [`stitch-to-compose-loop/`](stitch-to-compose-loop/) |
+| **[rea-screenshot-game-builder](rea-screenshot-game-builder/)** | Game Systems & Reverse-Engineering | Re-architects native mobile games from APK UnityFS bundles & screenshots with 1:1 mathematical parity. | 50:50 Alpha overlay diff & pure-Python LZ4 geometry extraction. | [`rea-screenshot-game-builder/`](rea-screenshot-game-builder/) |
 
 ---
 
-## 🎨 Visual Evolution & Impact
+## 🔄 1. Stitch-to-Compose Conversion Loop
 
-| 📐 Stitch Mockup Specification | ❌ Direct Prompt (No Verification) |  Seamless Conversion (Self-Healed) |
+> **Convert Google Stitch mockups into compiling, self-healed Jetpack Compose UI.**
+
+An agentic AI workflow that programmatically fetches screen specifications from Google Stitch, generates idiomatic Composable UI, and automatically heals syntax, layout, and contrast errors through headless testing.
+
+### 🎨 Visual Evolution & Impact
+
+| 📐 Stitch Mockup Specification | ❌ Direct Prompt (No Verification) | 🚀 Seamless Conversion (Self-Healed) |
 | :---: | :---: | :---: |
 | ![Stitch Design](image/stitch_design.png) | ![Without Skill](image/without_skill.png) | ![With Skill](image/with_skill.png) |
 
----
-
-## 🏗 System Architecture
-
-The conversion loop operates as an iterative state machine, running locally and in parallel:
+### 🛠 Workflow Architecture
 
 ```mermaid
 graph TD
@@ -45,55 +45,99 @@ graph TD
     F -->|Visual Match / Zero Discrepancies| H[Final Verification / Code Ready]
 ```
 
+👉 **Full Documentation & CLI Guide:** [stitch-to-compose-loop/README.md](stitch-to-compose-loop/README.md)
+
+---
+
+## 🎮 2. REA & Screenshot Game Builder
+
+> **Reverse-engineer APK assets and reference screenshots into clean-room, production-grade native codebases.**
+
+Extracts ground truth 3D meshes, vertex rings, font metrics, and perspective ratios from target mobile game APK Addressables/bundles and in-game screenshots, then reconstructs the game in native tech stacks (e.g., Jetpack Compose + Rust Core NDK, Godot, or Flutter) with zero copyright infringement.
+
+### 🎨 Visual Parity & Geometric Alignment
+
+![1:1 Geometric Parity & Visual Comparison](image/rea_compare.jpeg)
+
+*Achieving 1:1 mathematical & visual parity: Target APK Addressables ground truth vs. Clean-room procedural shaders and native engine implementation.*
+
+### 🛠 Four-Phase Reverse-Engineering Protocol
+
+```mermaid
+flowchart TD
+    A["APK Bundles & Screenshots"] --> B["Phase 1: REA Geometry & Metric Extraction"]
+    B --> C["Phase 2: Mathematical Camera & Grid Registration"]
+    C --> D["Phase 3: Clean-Room Shader & Asset Synthesis"]
+    D --> E["Phase 4: Device Deployment & 50:50 Alpha Overlay QA"]
+    E -->|Discrepancy Detected| C
+    E -->|Verified Parity| F["Production Codebase & Clean-Room Approved"]
+```
+
+👉 **Full Documentation & Mathematical Specs:** [rea-screenshot-game-builder/README.md](rea-screenshot-game-builder/README.md)
+
 ---
 
 ## 📂 Repository Structure
 
-The files within this skill are located in the [stitch-to-compose-loop/](stitch-to-compose-loop/) directory:
-
-* 📄 [SKILL.md](stitch-to-compose-loop/SKILL.md) — Core AI agent execution instructions and prompts.
-* 📂 **`scripts/`** — Python automation scripts driving compilation parsing and screenshot testing.
-  * 🐍 [setup_roborazzi.py](stitch-to-compose-loop/scripts/setup_roborazzi.py) — Robustly sets up Roborazzi & Robolectric dependencies inside target projects.
-  * 🐍 [error_parser.py](stitch-to-compose-loop/scripts/error_parser.py) — Parses Kotlin compiler output to return clickable, line-mapped syntax errors.
-  * 🐍 [render_preview.py](stitch-to-compose-loop/scripts/render_preview.py) — Dynamic preview test generator, executing headless Compose renders and cleaning up residual test files.
-* 📂 **`templates/`** — Starter templates for code generation.
-  * 📄 [compose_template.kt.tmpl](stitch-to-compose-loop/templates/compose_template.kt.tmpl) — Basic Composable boilerplate configured with standard imports and theme scaffolding.
+```text
+skills/
+├── README.md                           # Main repository catalog
+├── image/                              # Visual verification and comparison showcases
+│   ├── stitch_design.png
+│   ├── without_skill.png
+│   ├── with_skill.png
+│   └── rea_compare.jpeg
+├── stitch-to-compose-loop/             # Stitch to Jetpack Compose Skill
+│   ├── SKILL.md                        # AI Agent execution prompt & rules
+│   ├── README.md                       # Dedicated documentation
+│   ├── scripts/
+│   │   ├── setup_roborazzi.py          # Auto-configure headless testing
+│   │   ├── error_parser.py             # Kotlin compile error parser
+│   │   └── render_preview.py           # Headless screenshot generator
+│   └── templates/
+│       └── compose_template.kt.tmpl    # Starter Composable scaffolding
+└── rea-screenshot-game-builder/        # APK & Screenshot Game Builder Skill
+    ├── SKILL.md                        # AI Agent reverse-engineering protocol
+    ├── README.md                       # Dedicated documentation & formulas
+    └── scripts/
+        ├── overlay_comparator.py       # 3-Panel 50:50 alpha overlay comparator
+        └── unityfs_decompress.py       # Pure-Python UnityFS LZ4 stream unpacker
+```
 
 ---
 
-## 🚀 How to Execute the Loop
+## 🚀 Installation & Agent Configuration
 
-### Phase 0: Setup Roborazzi Dependencies
-Prepare the target Android project for headless rendering tests:
+To use these skills with **Google Antigravity (`agy`)** or **Gemini CLI**:
+
+### Global User-Level Installation
+Clone or copy the target skill folder into your personal skills directory:
 ```bash
-python stitch-to-compose-loop/scripts/setup_roborazzi.py --project-root <path-to-android-project>
-./gradlew dependencies
+# Copy Stitch-to-Compose skill
+cp -r stitch-to-compose-loop ~/.gemini/config/skills/
+
+# Copy REA Screenshot Game Builder skill
+cp -r rea-screenshot-game-builder ~/.gemini/config/skills/
 ```
 
-### Phase 1: Retrieve Specs & Generate Code
-1. Retrieve mockups and details using `StitchMCP` tools (`list_screens`, `get_screen`).
-2. Scaffold `GeneratedScreen.kt` using [compose_template.kt.tmpl](stitch-to-compose-loop/templates/compose_template.kt.tmpl).
-
-### Phase 2: Self-Healing Compile Loop
-Run compilation and parse error logs to automatically fix syntax issues:
+### Workspace-Local Installation
+Place the skill inside the target project repository:
 ```bash
-./gradlew :app:compileDebugKotlin > stitch-to-compose-loop/temp/compile_log.txt 2>&1
-python stitch-to-compose-loop/scripts/error_parser.py stitch-to-compose-loop/temp/compile_log.txt --project-root <path-to-android-project>
+mkdir -p <target-project>/.gemini/skills
+cp -r rea-screenshot-game-builder <target-project>/.gemini/skills/
 ```
 
-### Phase 3: Headless Screenshot & Visual QA Loop
-Generate headless screenshots and iterate on layout alignments until they visually match:
-```bash
-python stitch-to-compose-loop/scripts/render_preview.py "GeneratedScreen" "GeneratedScreen" "rendered_preview.png" \
-  --project-root <path-to-android-project> \
-  --theme <ThemeName> \
-  --theme-import <ThemeImportPackage> \
-  --package <PackageName>
-```
-Compare the output at `stitch-to-compose-loop/temp/rendered_preview.png` against the target design, correct styling parameters, and re-run.
+Once installed, your Antigravity agent will automatically discover the skill and utilize its prompts and helper scripts during execution.
 
 ---
 
-## 🤝 Contributing & Feedback
+## 👤 Author & Maintainer
 
-Contributions, feature requests, and feedback are always welcome! Feel free to open issues or pull requests to enhance the self-healing accuracy and execution speed of the conversion loop.
+**Drew Yu**
+* GitHub: [@hwanjongyu](https://github.com/hwanjongyu)
+
+---
+
+## 🤝 Contributing & License
+
+Issues and pull requests are warmly welcome! Distributed under the [MIT License](LICENSE) © 2026 Drew Yu.
