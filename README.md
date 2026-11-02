@@ -14,7 +14,7 @@ A curated collection of production-grade **Agentic AI Skills** designed for Goog
 | Skill Name | Primary Domain | Core Capabilities | Verification Loop | Path |
 | :--- | :--- | :--- | :--- | :--- |
 | **[stitch-to-compose-loop](stitch-to-compose-loop/)** | Android UI & Jetpack Compose | Converts Google Stitch design specifications directly into production-ready Jetpack Compose code. | Headless Roborazzi + Robolectric visual diff & compiler self-healing. | [`stitch-to-compose-loop/`](stitch-to-compose-loop/) |
-| **[rea-screenshot-game-builder](rea-screenshot-game-builder/)** | Game Systems & Reverse-Engineering | Re-architects native mobile games from APK UnityFS bundles & screenshots with 1:1 mathematical parity. | 50:50 Alpha overlay diff & pure-Python LZ4 geometry extraction. | [`rea-screenshot-game-builder/`](rea-screenshot-game-builder/) |
+| **[rea-screenshot-game-builder](rea-screenshot-game-builder/)** | Game Systems & Reverse-Engineering | Re-architects native mobile games from APK UnityFS bundles, TypeTree configs, IL2CPP metadata & screenshots with 1:1 visual, kinematic, and logic parity. | 50:50 Alpha overlay diff, mid-flight motion frame QA & pure-Python LZ4 extraction. | [`rea-screenshot-game-builder/`](rea-screenshot-game-builder/) |
 
 ---
 
@@ -51,9 +51,9 @@ graph TD
 
 ## 🎮 2. REA & Screenshot Game Builder
 
-> **Reverse-engineer APK assets and reference screenshots into clean-room, production-grade native codebases.**
+> **Reverse-engineer APK assets, TypeTree configs, IL2CPP metadata, and reference screenshots into clean-room, production-grade native codebases.**
 
-Extracts ground truth 3D meshes, vertex rings, font metrics, and perspective ratios from target mobile game APK Addressables/bundles and in-game screenshots, then reconstructs the game in native tech stacks (e.g., Jetpack Compose + Rust Core NDK, Godot, or Flutter) with zero copyright infringement.
+Extracts ground truth 3D meshes, vertex rings, `MonoBehaviour` TypeTree configs (`AnimationsConfig`, `GameplayConfig`), IL2CPP `global-metadata.dat` decision logic, font metrics, and perspective ratios from target mobile game APK Addressables/bundles and in-game screenshots, then reconstructs the game in native tech stacks (e.g., Jetpack Compose + Rust Core NDK, Godot, or Flutter) with zero copyright infringement.
 
 ### 🎨 Visual Parity & Geometric Alignment
 
@@ -61,16 +61,18 @@ Extracts ground truth 3D meshes, vertex rings, font metrics, and perspective rat
 
 *Achieving 1:1 mathematical & visual parity: Target APK Addressables ground truth vs. Clean-room procedural shaders and native engine implementation.*
 
-### 🛠 Four-Phase Reverse-Engineering Protocol
+### 🛠 Six-Phase Reverse-Engineering Protocol
 
 ```mermaid
 flowchart TD
-    A["APK Bundles & Screenshots"] --> B["Phase 1: REA Geometry & Metric Extraction"]
+    A["APK Bundles, Metadata & Screenshots"] --> B["Phase 1: REA Geometry, Config & Metadata Extraction"]
     B --> C["Phase 2: Mathematical Camera & Grid Registration"]
-    C --> D["Phase 3: Clean-Room Shader & Asset Synthesis"]
-    D --> E["Phase 4: Device Deployment & 50:50 Alpha Overlay QA"]
-    E -->|Discrepancy Detected| C
-    E -->|Verified Parity| F["Production Codebase & Clean-Room Approved"]
+    C --> D["Phase 3: Gameplay Logic & Smart Generator Parity"]
+    D --> E["Phase 4: Clean-Room 3D Shader & Asset Synthesis"]
+    E --> F["Phase 5: Animation Kinematics & State-Synced Motion"]
+    F --> G["Phase 6: Device Deployment, 50:50 Overlay & Motion Frame QA"]
+    G -->|Discrepancy Detected| C
+    G -->|Verified Parity| H["Production Codebase & Spec Approved"]
 ```
 
 👉 **Full Documentation & Mathematical Specs:** [rea-screenshot-game-builder/README.md](rea-screenshot-game-builder/README.md)
